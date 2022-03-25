@@ -60,15 +60,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="orden.php" class="nav-link">
+              <a href="telefono.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Telefono</p>
+              </a>
+            </li>
+            <li class="nav-item">
+            <a href="orden.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Orden de servicio</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/mailbox/read-mail.html" class="nav-link">
+            <a href="cerrar_sesion.php?cerrar_sesion=1" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Read</p>
+                <p>Cerrar sesion</p>
               </a>
             </li>
           </ul>

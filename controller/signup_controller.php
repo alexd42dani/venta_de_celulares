@@ -11,18 +11,28 @@ if ($_GET['request'] == "usertest") {
 
 function insert_user_model()
 {
-    $nameErr = null;
+    $telefonoErr = null;
+    $direccionErr = null;
     $userErr = null;
     $emailErr = null;
     $passErr = null;
     $pass1Err = null;
 
-    if (empty($_POST["name"])) {
-        $nameErr = "Name is required";
+    if (empty($_POST["telefono"])) {
+        $telefonoErr = "telefono is required";
     } else {
-        $name = test_input($_POST["name"]);
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-            $nameErr = "Only letters and white space allowed in name";
+        $telefono = test_input($_POST["telefono"]);
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $telefono)) {
+            $telefonoErr = "Only letters and numbers allowed in telefono";
+        }
+    }
+
+    if (empty($_POST["direccion"])) {
+        $direccionErr = "direccion is required";
+    } else {
+        $direccion = test_input($_POST["direccion"]);
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $direccion)) {
+            $direccionErr = "Only letters and white space allowed in direccion";
         }
     }
 
@@ -79,7 +89,10 @@ function insert_user_model()
 
     $array = array(
         array(
-            "name" => $nameErr
+            "telefono" => $telefonoErr
+        ),
+        array(
+            "direccion" => $direccionErr
         ),
 
         array(
@@ -99,13 +112,13 @@ function insert_user_model()
         ),
 
     );
-    if ($nameErr != null || $userErr != null || $emailErr != null || $passErr != null || $pass1Err != null) {
+    if ($telefonoErr != null || $direccionErr != null || $userErr != null || $emailErr != null || $passErr != null || $pass1Err != null) {
         echo json_encode($array);
     }
 
-    if ($nameErr == null && $userErr == null && $emailErr == null && $passErr == null && $pass1Err == null) {
+    if ($telefonoErr == null && $direccionErr == null && $userErr == null && $emailErr == null && $passErr == null && $pass1Err == null) {
         $user = new signup_model();
-        $result = $user->insert_user($_POST['user'], $_POST['pass'], $_POST['name'], $_POST['email']);
+        $result = $user->insert_user($_POST['user'], $_POST['pass'], $_POST['telefono'], $_POST['direccion'], $_POST['email']);
         $array[] = array('message' => str_replace('"', "", $result));
         echo json_encode($array);
         //echo $result;

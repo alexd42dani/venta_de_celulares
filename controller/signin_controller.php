@@ -49,7 +49,13 @@ function insert_user_model()
             $array[] = array('message' => "Contraseña o usuario incorrectas");
             echo json_encode($array);
         } else {
-            $array[] = array('message' => str_replace('"', "", $result));
+            session_start();
+            $_SESSION["usuario"] = array(
+                "Cedula" => $result[0]["id"],
+                "Nombre" => $result[0]["usuario"],
+                "Email" => $result[0]["email"],
+            );   
+            $array[] = array('message' => str_replace('"', "", json_encode($result)));
             echo json_encode($array);
         }
     }

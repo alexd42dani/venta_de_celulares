@@ -2,7 +2,8 @@
 document.getElementById("signin").setAttribute("href", 'http://' + window.location.hostname + '/alex_1/signin.html');
 val = 0;
 val1 = 0;
-const name = document.getElementById("name");
+const telefono = document.getElementById("telefono");
+const direccion = document.getElementById("direccion");
 const user = document.getElementById("user");
 const email = document.getElementById("email");
 const pass = document.getElementById("pass");
@@ -14,7 +15,8 @@ $("#btn-submit").click(function () {
    //toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
    //console.log("helloo");
    val = 0;
-    val = valEmpty(name, val);
+    val = valEmpty(telefono, val);
+    val = valEmpty(direccion, val);
     val = valEmpty(user, val);
     val = valEmpty(email, val);
     val = valEmpty(pass, val);
@@ -133,37 +135,41 @@ function signup() {
       {
          url: 'controller/signup_controller.php?request=signup',
          type: 'POST',
-         data: { user: user.value, name: name.value, pass: pass.value, pass1: pass1.value, email: email.value },
+         data: { user: user.value, telefono: telefono.value, direccion: direccion.value, pass: pass.value, 
+            pass1: pass1.value, email: email.value },
          // timeout: 500,     
          success: function (data) {
            // console.log("success");
             console.log(data);
             const obj = JSON.parse(data);
             console.log(obj);
-            if (obj[0].name != null) {
-               toastr.error(obj[0].name)
+            if (obj[0].telefono != null) {
+               toastr.error(obj[0].telefono)
             }
-            if (obj[1].user != null) {
-               toastr.error(obj[1].user)
+            if (obj[1].direccion != null) {
+               toastr.error(obj[1].direccion)
             }
-            if (obj[2].email != null) {
-               toastr.error(obj[2].email)
+            if (obj[2].user != null) {
+               toastr.error(obj[2].user)
             }
-            if (obj[3].pass != null) {
-               toastr.error(obj[3].pass)
+            if (obj[3].email != null) {
+               toastr.error(obj[3].email)
             }
-            if (obj[4].pass1 != null) {
-               toastr.error(obj[4].pass1)
+            if (obj[4].pass != null) {
+               toastr.error(obj[4].pass)
+            }
+            if (obj[5].pass1 != null) {
+               toastr.error(obj[5].pass1)
             }
             /*if (obj[5].message != null) {
                sessionStorage.setItem('message_signup', obj[5].message)
             }*/
-            if (typeof obj[5] === 'undefined') {
+            if (typeof obj[6] === 'undefined') {
               // sessionStorage.setItem('message_signup', obj[5].message)
               console.log("undefined");
             }else{
-               sessionStorage.setItem('message_signup', obj[5].message)
-               window.location.href = 'http://' + window.location.hostname + '/alex_1/signin.html';
+               sessionStorage.setItem('message_signup', obj[6].message)
+               window.location.href = 'http://' + window.location.hostname + '/venta_de_celulares/signin.html';
             }
 
             // $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);

@@ -26,6 +26,7 @@
     </div>
 
     <?php
+    include 'validar_usuario.php';
     include 'menubar.php'
     ?>
 

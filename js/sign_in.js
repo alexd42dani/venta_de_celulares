@@ -25,6 +25,8 @@ var msg_signup = sessionStorage.getItem('message_signup');
 //toastr.success(msg_signup);
 if (msg_signup != null){
    toastr.success(msg_signup);
+   sessionStorage.clear();
+   //window.sessionStorage.removeItem(msg_signup);
 }
 
 function valEmpty(p) {
@@ -56,8 +58,9 @@ function signin() {
                toastr.error(obj[2].message)
             }else{
                console.log("login");
+               console.log(data);
              //  localStorage.setItem('message_signup', obj[5].message)
-            //   window.location.href = 'http://' + window.location.hostname + '/alex_1/signin.html';
+               window.location.href = 'http://' + window.location.hostname + '/venta_de_celulares/menu.php';
             }
          },
          error: function (jqXhr, textStatus, errorMessage) {
