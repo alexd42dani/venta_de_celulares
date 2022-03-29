@@ -58,6 +58,8 @@ function insert() {
                      toastr.error(obj[index]);
                   }
                }
+            }else{
+               toastr.success(obj);
             }
          },
          error: function (jqXhr, textStatus, errorMessage) {

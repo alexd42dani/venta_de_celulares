@@ -67,6 +67,22 @@ class connection
         return "New record created successfully";
     }
 
+    function insert_data2($sql)
+    {
+        $connection = new connection();
+        $conn = $connection->OpenCon();
+
+        if ($conn->query($sql) === TRUE) {
+            $last_id = $conn->insert_id;
+            $conn->close();
+            return $last_id;
+        } else {
+            $conn->close();
+            return "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+    }
+
     function CloseCon($conn)
     {
         $conn->close();
