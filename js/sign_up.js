@@ -1,4 +1,8 @@
 
+$("#form_signup").submit(function(e) {
+   e.preventDefault();
+});
+
 document.getElementById("signin").setAttribute("href", 'http://' + window.location.hostname + '/alex_1/signin.html');
 val = 0;
 val1 = 0;
@@ -33,7 +37,7 @@ $("#btn-submit").click(function () {
       //console.log("val "+val);
       //console.log("val1 "+val1);
      // if (val == 0 && val1 == 0) {
-         signup();
+         signup1();
       //}
    } else {
       alert("Agree the terms and policy");
@@ -179,4 +183,52 @@ function signup() {
             // $('p').append('Error: ' + errorMessage);
          }
       });
+};
+
+function signup1() {
+   var form = $('#form_signup')[0]; 
+   var formData = new FormData(form);
+  // console.log(formData);
+
+   $.ajax({
+      url: 'controller/signup_controller.php?request=signup',
+      data: formData,
+      type: 'POST',
+      contentType: false, 
+      processData: false, 
+      success: function(data) {
+         console.log(data);
+         const obj = JSON.parse(data);
+         console.log(obj);
+         if (obj[0].telefono != null) {
+            toastr.error(obj[0].telefono)
+         }
+         if (obj[1].direccion != null) {
+            toastr.error(obj[1].direccion)
+         }
+         if (obj[2].user != null) {
+            toastr.error(obj[2].user)
+         }
+         if (obj[3].email != null) {
+            toastr.error(obj[3].email)
+         }
+         if (obj[4].pass != null) {
+            toastr.error(obj[4].pass)
+         }
+         if (obj[5].pass1 != null) {
+            toastr.error(obj[5].pass1)
+         }
+         /*if (obj[5].message != null) {
+            sessionStorage.setItem('message_signup', obj[5].message)
+         }*/
+         if (typeof obj[6] === 'undefined') {
+           // sessionStorage.setItem('message_signup', obj[5].message)
+           console.log("undefined");
+         }else{
+            sessionStorage.setItem('message_signup', obj[6].message)
+            window.location.href = 'http://' + window.location.hostname + '/venta_de_celulares/signin.html';
+         }
+      }
+   });
+
 };

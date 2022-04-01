@@ -112,13 +112,18 @@ function insert_user_model()
         ),
 
     );
+
     if ($telefonoErr != null || $direccionErr != null || $userErr != null || $emailErr != null || $passErr != null || $pass1Err != null) {
         echo json_encode($array);
     }
 
     if ($telefonoErr == null && $direccionErr == null && $userErr == null && $emailErr == null && $passErr == null && $pass1Err == null) {
+        $upload_image = $_FILES["foto"]["name"];
+        $folder = "../img/";
+        move_uploaded_file($_FILES["foto"]["tmp_name"], "$folder" . $_FILES["foto"]["name"]);
+
         $user = new signup_model();
-        $result = $user->insert_user($_POST['user'], $_POST['pass'], $_POST['telefono'], $_POST['direccion'], $_POST['email']);
+        $result = $user->insert_user($_POST['user'], $_POST['pass'], $_POST['telefono'], $_POST['direccion'], $_POST['email'], $upload_image);
         $array[] = array('message' => str_replace('"', "", $result));
         echo json_encode($array);
         //echo $result;

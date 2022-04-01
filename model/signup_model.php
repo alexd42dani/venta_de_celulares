@@ -4,15 +4,15 @@ include('../model/connection.php');
 
 class signup_model
 {
-  function insert_user($user, $pass, $telefono, $direccion, $email)
+  function insert_user($user, $pass, $telefono, $direccion, $email, $foto)
   {
     $connection = new connection();
     // $sql = "INSERT INTO user (user, password, nombre)
     // VALUES ('".$user."','". hash('sha256', $pass)."','". $nombre ."')";
-    $sql = "INSERT INTO usuario (usuario, password, telefono, email, direccion)
-    VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO usuario (usuario, password, telefono, email, direccion, foto)
+    VALUES (?, ?, ?, ?, ?, ?)";
     // return json_encode($sql);
-    $params = array($user, hash('sha256', $pass), $telefono, $email, $direccion);
+    $params = array($user, hash('sha256', $pass), $telefono, $email, $direccion, $foto);
     //$result = $connection->insert_data($sql);
     $result = $connection->insert_data1($sql, $params);
     return json_encode($result);

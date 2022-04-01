@@ -28,8 +28,9 @@
     <div class="card">
       <div class="card-body register-card-body">
         <p class="login-box-msg">Register a new membership</p>
+        <form id="form_signup">
         <div class="input-group mb-3">
-          <input type="text" id="telefono" class="form-control" placeholder="Telefono">
+          <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Telefono">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="far fa-address-card"></span>
@@ -37,7 +38,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" id="direccion" class="form-control" placeholder="Direccion">
+          <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="far fa-address-card"></span>
@@ -45,7 +46,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="user" id="user"  class="form-control" placeholder="User">
+          <input type="user" id="user" name="user" class="form-control" placeholder="User">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -53,7 +54,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" id="email" class="form-control" placeholder="Email">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -62,7 +63,7 @@
         </div>
         <code id="msg_email"></code>
         <div class="input-group mb-3">
-          <input type="password" id="pass" class="form-control" placeholder="Password">
+          <input type="password" id="pass" name="pass" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -70,12 +71,16 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" id="pass1" class="form-control" placeholder="Retype password">
+          <input type="password" id="pass1" name="pass1" class="form-control" placeholder="Retype password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+        </div>
+        <label for="">Ingrese foto</label>
+        <div class="input-group mb-3">
+          <input type="file" id="foto" name="foto" class="form-control" placeholder="Ingrese foto">
         </div>
         <code id="msg_pass1"></code>
         <div class="row">
@@ -93,6 +98,7 @@
           </div>
           <!-- /.col -->
         </div>
+        </form>
 
         <div class="social-auth-links text-center">
           <p>- OR -</p>

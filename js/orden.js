@@ -123,6 +123,7 @@ function insert() {
                }
             } else {
                toastr.success(obj);
+               //location.reload();
                clean_fields();
             }
          },
