@@ -54,6 +54,7 @@ function insert_user_model()
                 "Cedula" => $result[0]["id"],
                 "Nombre" => $result[0]["usuario"],
                 "Email" => $result[0]["email"],
+                "Foto" => $result[0]["foto"],
             );   
             $array[] = array('message' => str_replace('"', "", json_encode($result)));
             echo json_encode($array);

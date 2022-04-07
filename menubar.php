@@ -6,10 +6,10 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="index3.html" class="nav-link">Home</a>
+      <a href="menu.php" class="nav-link">Menu</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Contact</a>
+      <a href="cerrar_sesion.php?cerrar_sesion=1" class="nav-link">Cerrar sesion</a>
     </li>
   </ul>
 </nav>
@@ -28,10 +28,11 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="img/<?php echo $_SESSION["usuario"]["Foto"]; ?>" id="imagen_usuario" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block"><?php echo $_SESSION["usuario"]["Nombre"]; ?>
+        </a>
       </div>
     </div>
 
@@ -66,13 +67,13 @@
               </a>
             </li>
             <li class="nav-item">
-            <a href="orden.php" class="nav-link">
+              <a href="orden.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Orden de servicio</p>
               </a>
             </li>
             <li class="nav-item">
-            <a href="cerrar_sesion.php?cerrar_sesion=1" class="nav-link">
+              <a href="cerrar_sesion.php?cerrar_sesion=1" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cerrar sesion</p>
               </a>
